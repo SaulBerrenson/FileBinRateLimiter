@@ -3,6 +3,9 @@ Library for reading binary files with rate limit (speed limit by byte to second)
 Example need reading file  not more then 1 mb per sec.
 Rate limiter was used ported class Google.Guava.RateLimiter
 
+### nuget
+https://www.nuget.org/packages/FileRateLimiter/
+
 ### Usage
 ```
   const int SPEED_LIMIT = 1024 * 1024 * 5;
