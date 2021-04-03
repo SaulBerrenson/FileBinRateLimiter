@@ -4,7 +4,7 @@ using System.Threading;
 namespace FileRateLimiter
 {
    // ported from Google.Guava RateLimiter
-    public class RateLimiter
+    internal class RateLimiter
     {
         public RateLimiter()
         {

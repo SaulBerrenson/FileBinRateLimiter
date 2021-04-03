@@ -7,24 +7,49 @@ namespace FileRateLimiter
 {
     public class ExtentedBinaryReader : BinaryReader
     {
+        #region FactoryMethods
+
+        public static ExtentedBinaryReader CreateInstance(Stream input, Encoding encoding)
+        {
+            return new ExtentedBinaryReader(input, encoding);
+        }
+
+        public static ExtentedBinaryReader CreateInstance(Stream input)
+        {
+            return new ExtentedBinaryReader(input);
+        }
+
         public static ExtentedBinaryReader CreateInstance(Stream input, Encoding encoding, bool leaveOpen)
         {
             return new ExtentedBinaryReader(input, encoding, leaveOpen);
         }
 
-        public ExtentedBinaryReader(Stream input) : base(input)
+
+        #endregion
+
+        #region Constructors
+
+        private ExtentedBinaryReader(Stream input) : base(input)
         {
         }
 
-        public ExtentedBinaryReader(Stream input, Encoding encoding) : base(input, encoding)
+        private ExtentedBinaryReader(Stream input, Encoding encoding) : base(input, encoding)
         {
         }
 
         private ExtentedBinaryReader(Stream input, Encoding encoding, bool leaveOpen) : base(input, encoding, leaveOpen)
         {
         }
+        #endregion
+        
 
         private List<IFilter> _filters = new List<IFilter>();
+
+        public void AddFilter(IFilter filter)
+        {
+            if(!_filters.Contains(filter))
+                _filters.Add(filter);
+        }
 
         public override int Read(byte[] buffer, int index, int count)
         {

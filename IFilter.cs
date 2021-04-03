@@ -6,6 +6,4 @@ namespace FileRateLimiter
     {
         void Process<T>(ArraySegment<T> data);
     }
-
-
 }
